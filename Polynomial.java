@@ -3,34 +3,41 @@ public class Polynomial {
 	double[] coef;
 
 	public Polynomial() {
-		coef = new double[1];
-		coef[0] = 0;
-	}
+        coef = new double[] {0};
+    }
+    
 
-	Polynomial( double [] arg) {
+	public Polynomial(double arg[]) {
 		coef = new double[arg.length];
-		for(int i = 0; i < coef.length; i++) {
+		for(int i = 0; i < arg.length; i++) {
 			coef[i] = arg[i];
 		}
 	}
 	
 
-	public Polynomial add(Polynomial obj){
-		
-	   plen = Math.max(coef.length, obj.lenth);
-	   
-	   double sum[] = new double[];
-
-        for(int i=0;i<plen;i++)
-        {
-            sum[i] = coef[i]+other.coef[i];
-        }
-        Polynomial newpoly = new Polynomial(sum);
+    public Polynomial add(Polynomial p2) {
         
-	   return newpoly;
+	  int len1 = this.coef.length;
 
+        int len2 = p2.coef.length;
 
+        double[] sum = new double[Math.max(len1, len2)];
+
+        for (int i = 0; i < len1; i++)
+        {
+            sum[i] += this.coef[i];
+        }
+	
+	if (len1 < len2){
+        for (int i = 0; i < len2; i++)
+        {
+            sum[i] += p2.coef[i];
+        }
 	}
+
+        return new Polynomial(sum);
+    }
+
 
     public double evaluate(double x)
     {
@@ -42,8 +49,8 @@ public class Polynomial {
         return sum;
     }
 
-	public boolean hasRoot( double number) {
-		if (evaluate(number) == 0) return true;
+	public boolean hasRoot( double n) {
+		if (evaluate(n) == 0) return true;
 		return false;
 	}
 }
