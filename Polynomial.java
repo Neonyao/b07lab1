@@ -33,13 +33,13 @@ public class Polynomial {
 		BufferedReader textReader = new BufferedReader(readed);
 		
 		String text = textReader.readLine();
-		String[] str = text.split("\\+|-");
+		String[] strs = text.split("\\+|-");
 
-		double returnCoef[] = new double[str.length];
-		int returnExp[] = new int[str.length];
+		double returnCoef[] = new double[strs.length];
+		int returnExp[] = new int[strs.length];
 		int i = 0;
 		
-		for (String str) {
+		for (String str: strs) {
 		    if (str.contains("x")) {
 			String[] tempSplit = str.split("x");
 			returnCoef[i] = Double.parseDouble(tempSplit[0]);
@@ -51,7 +51,7 @@ public class Polynomial {
 		    }
 		    i++;
 		}
-		this.coeff = returnCoef;
+		this.coef = returnCoef;
 		this.exp = returnExp;
     }		
 	
@@ -81,7 +81,7 @@ public class Polynomial {
         }
 	
 
-        return new Polynomial(new Polynomial(sum,sexp));
+        return new Polynomial(sum,sexp);
     }
 	
 	
